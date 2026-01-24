@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Developer Internship - Cognifyz Technologies</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Navigation */
+    .nav {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #6366f1;
+    }
+
+    .cta-nav {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s;
+    }
+
+    .cta-nav:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    .cta-hero {
+      display: inline-block;
+      background: white;
+      color: #6366f1;
+      padding: 18px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 700;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+
+    .cta-hero:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    }
+
+    /* Highlights Section */
+    .highlights {
+      padding: 100px 20px;
+      background: #f8fafc;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #1e293b;
+      margin-bottom: 60px;
+      font-weight: 700;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .highlight-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .highlight-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 20px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .highlight-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #1e293b;
+    }
+
+    /* Qualifications */
+    .qualifications {
+      padding: 100px 20px;
+      background: white;
+    }
+
+    .qualifications-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .skills-list {
+      list-style: none;
+    }
+
+    .skills-list li {
+      background: #f1f5f9;
+      margin-bottom: 12px;
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    .skills-list li::before {
+      content: '✓ ';
+      color: #10b981;
+      font-weight: bold;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1e293b;
+      color: white;
+      padding: 60px 20px 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: #6366f1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .qualifications-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .nav-container {
+        padding: 15px 20px;
+      }
+      
+      .hero {
+        padding: 100px 20px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="logo">Cognifyz Technologies</div>
+      <a href="#apply" class="cta-nav">Apply Now</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Web Developer Internship Opportunities<br><span style="font-weight: 400;">at Cognifyz Technologies</span></h1>
+      <p class="hero-subtitle">Join our 6-month intensive program and build production-ready web applications with industry experts.</p>
+      <a href="#apply" class="cta-hero">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="highlights">
+    <div class="container">
+      <h2 class="section-title">Why Join Us?</h2>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-icon">🚀</div>
+          <h3>Real-World Experience</h3>
+          <p>Work on live client projects and build a production-ready portfolio that stands out to employers.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">👨‍🏫</div>
+          <h3>Expert Mentorship</h3>
+          <p>1:1 guidance from senior developers with 10+ years of experience in full-stack development.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">💼</div>
+          <h3>Job Placement</h3>
+          <p>90% placement rate with top tech companies. Pre-placement interviews and career support included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qualifications -->
+  <section class="qualifications">
+    <div class="container">
+      <div class="qualifications-grid">
+        <div>
+          <h2 class="section-title" style="margin-bottom: 30px;">Who We're Looking For</h2>
+          <ul class="skills-list">
+            <li>HTML5, CSS3, JavaScript (Intermediate)</li>
+            <li>React.js or Vue.js (Basic knowledge)</li>
+            <li>Responsive design & CSS Grid/Flexbox</li>
+            <li>Git & GitHub proficiency</li>
+            <li>Basic Node.js & API integration</li>
+            <li>Problem-solving mindset</li>
+            <li>B.Tech CSE/IT (3rd/4th year preferred)</li>
+          </ul>
+        </div>
+        <div style="text-align: center;">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=500&fit=crop" 
+               alt="Developers collaborating" 
+               style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="apply">
+    <div class="container">
+      <h2 style="font-size: 3rem; margin-bottom: 20px;">Ready to Launch Your Career?</h2>
+      <p style="font-size: 1.3rem; margin-bottom: 40px; opacity: 0.95;">Applications close in 7 days. Limited seats available.</p>
+      <a href="mailto:careers@cognifyz.com?subject=Web%20Developer%20Internship%20Application" class="cta-hero">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <h3 style="margin-bottom: 20px;">Have Questions?</h3>
+      <p style="margin-bottom: 30px; opacity: 0.9;">Get in touch with our recruitment team</p>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <span>careers@cognifyz.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <span>WhatsApp: +91 98765 43210</span>
+        </div>
+      </div>
+      
+      <p style="margin-top: 40px; opacity: 0.7; font-size: 0.9rem;">
+        © 2025 Cognifyz Technologies. All rights reserved.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

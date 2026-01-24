@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Simple Webpage</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Navigation Menu */
+    .nav {
+      background-color: #333;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .nav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .nav a:hover {
+      background-color: #575757;
+    }
+    .nav a.active {
+      background-color: #04aa6d;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Heading and Paragraph */
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
+    p {
+      font-size: 1.1em;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    /* Image */
+    .image-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Form */
+    .form-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 40px;
+      border-radius: 12px;
+      margin: 40px 0;
+      color: white;
+    }
+    .form-section h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-section label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .form-section input[type="text"] {
+      width: 100%;
+      max-width: 300px;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    .form-section input[type="submit"] {
+      background-color: #04aa6d;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    .form-section input[type="submit"]:hover {
+      background-color: #038c5a;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav a {
+        float: none;
+        display: block;
+      }
+      h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <div class="nav">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="container">
+    <!-- Heading and Paragraph -->
+    <h1>Welcome to My Webpage</h1>
+    <p>This webpage demonstrates a complete example combining a navigation menu, heading, paragraph, image, and a simple form - all styled with modern CSS.</p>
+
+    <!-- Image Section -->
+    <div class="image-section">
+      <img src="https://via.placeholder.com/600x300/667eea/ffffff?text=Sample+Image" alt="Sample webpage image">
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+      <h2>Quick Contact Form</h2>
+      <form action="#" method="post">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Examples</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+      font-size: 2.5em;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding: 25px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border-left: 5px solid #667eea;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+
+    /* Color Change Button */
+    .color-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 10px;
+    }
+    .color-btn.default {
+      background: #007bff;
+      color: white;
+    }
+    .color-btn.changed {
+      background: #ff6b6b;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Time Greeting Button */
+    .time-btn {
+      background: #28a745;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .time-btn:hover {
+      background: #218838;
+    }
+
+    /* Calculator */
+    .calc-container {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .calc-input {
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      width: 120px;
+    }
+    .calc-btn {
+      background: #17a2b8;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .calc-btn:hover {
+      background: #138496;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      color: #28a745;
+      margin-top: 15px;
+      min-height: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .calc-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .calc-input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript Interactive Examples</h1>
+
+    <!-- 1. Color Change Button -->
+    <div class="section">
+      <h2>1. Color-Changing Button</h2>
+      <button id="colorBtn" class="color-btn default">Click to Change Color</button>
+      <p>Click the button to toggle its color between blue and red.</p>
+    </div>
+
+    <!-- 2. Time Greeting Alert -->
+    <div class="section">
+      <h2>2. Time-Based Greeting</h2>
+      <button id="timeBtn" class="time-btn">Show Greeting</button>
+      <p>Click to see a greeting message based on current time of day.</p>
+    </div>
+
+    <!-- 3. Simple Calculator -->
+    <div class="section">
+      <h2>3. Addition Calculator</h2>
+      <div class="calc-container">
+        <input type="number" id="num1" class="calc-input" placeholder="Number 1">
+        <span>+</span>
+        <input type="number" id="num2" class="calc-input" placeholder="Number 2">
+        <button id="addBtn" class="calc-btn">Calculate</button>
+      </div>
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Color Change Button
+    const colorBtn = document.getElementById('colorBtn');
+    let isColored = false;
+
+    colorBtn.addEventListener('click', function() {
+      if (isColored) {
+        this.classList.remove('changed');
+        this.classList.add('default');
+        this.textContent = 'Click to Change Color';
+        isColored = false;
+      } else {
+        this.classList.remove('default');
+        this.classList.add('changed');
+        this.textContent = 'Clicked! Click Again';
+        isColored = true;
+      }
+    });
+
+    // 2. Time-Based Greeting Alert
+    const timeBtn = document.getElementById('timeBtn');
+    timeBtn.addEventListener('click', function() {
+      const hour = new Date().getHours();
+      let greeting;
+      
+      if (hour < 12) {
+        greeting = "Good Morning! ☀️ Have a great day!";
+      } else if (hour < 17) {
+        greeting = "Good Afternoon! 🌤️ Hope you're doing well!";
+      } else if (hour < 21) {
+        greeting = "Good Evening! 🌙 Relax and enjoy!";
+      } else {
+        greeting = "Good Night! 😴 Sweet dreams!";
+      }
+      
+      alert(greeting);
+    });
+
+    // 3. Simple Calculator
+    const addBtn = document.getElementById('addBtn');
+    const num1Input = document.getElementById('num1');
+    const num2Input = document.getElementById('num2');
+    const resultDiv = document.getElementById('result');
+
+    addBtn.addEventListener('click', function() {
+      const num1 = parseFloat(num1Input.value) || 0;
+      const num2 = parseFloat(num2Input.value) || 0;
+      const sum = num1 + num2;
+      resultDiv.textContent = `Result: ${sum}`;
+    });
+  </script>
+</body>
+</html>
